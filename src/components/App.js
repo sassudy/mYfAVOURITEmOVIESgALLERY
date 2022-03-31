@@ -3,26 +3,25 @@ import PageHeading from "./PageHeading";
 import List from "./List";
 import Gallery from "./Gallery";
 import Footer from "./Footer";
+import movies from "../movies";
+
+function createGallery(movie) {
+  return (
+    <Gallery
+      key={movie.id}
+      fName={movie.name}
+      imghrf={movie.imghrf}
+      alt={movie.name}
+    />
+  );
+}
 
 export default function App() {
   return (
     <div className="center">
       <PageHeading />
       <List />
-      <div className="gallery">
-        <Gallery
-          fName="Spirited away"
-          imghrf="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg"
-        />
-        <Gallery
-          fName="As above so Below"
-          imghrf="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oJZSajKLJkoTOzSZQN2ZwRnPwHZ.jpg"
-        />
-        <Gallery
-          fName="Journey to the Center of the Earth"
-          imghrf="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/myhj05hTAcQL2rhOrMqWxiioo49.jpg"
-        />
-      </div>
+      {movies.map(createGallery)}
       <Footer />
     </div>
   );
